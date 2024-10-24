@@ -1,4 +1,6 @@
-﻿namespace ChordTone
+﻿using System.ComponentModel;
+
+namespace ChordTone
 {
     /// <summary>
     /// 和音クラス
@@ -7,18 +9,100 @@
     {
         private Tone _key;
 
+        private Pitch _third;
+
+        private Pitch _fifth;
+
+        private Pitch _seventh;   
+
         private List<Tone> _tone = [];
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="instractor">コード生成指示</param>
         public Chord(Instractor instractor)
         {
             _key = instractor.Root;
+            _third = instractor.Third;
+            _fifth = instractor.Fifth;
+            _seventh = instractor.Seventh;
+        }
+
+        public List<Tone> CodeTones() 
+        {
+            // 長３和音
+            if (_third == Pitch.Major &&
+                _fifth == Pitch.Parfect &&
+                _seventh == Pitch.Omit)
+            {
+                var list = MajorTriad();
+                Console.WriteLine("構成音は、{0}、{1}、{2}です。", list[0].GetString(), list[1].GetString(), list[2].GetString());
+                return list;
+            }
+            // 短３和音
+            else if (_third == Pitch.Minor &&
+                     _fifth == Pitch.Parfect &&
+                     _seventh == Pitch.Omit)
+            {
+                var list = MinorTriad();
+                Console.WriteLine("構成音は、{0}、{1}、{2}です。", list[0].GetString(), list[1].GetString(), list[2].GetString());
+                return list;
+            }
+            // メジャーセブンス
+            else if (_third == Pitch.Major &&
+                     _fifth == Pitch.Parfect &&
+                     _seventh == Pitch.Major) 
+            {
+                var list = Major7th();
+                Console.WriteLine("構成音は、{0}、{1}、{2}、{3}です。", list[0].GetString(), list[1].GetString(), list[2].GetString(), list[3].GetString());
+                return list;
+            }
+            // ドミナントセブンス
+            else if (_third == Pitch.Major &&
+                     _fifth == Pitch.Parfect &&
+                     _seventh == Pitch.Minor)
+            {
+                var list = Dominant7th();
+                Console.WriteLine("構成音は、{0}、{1}、{2}、{3}です。", list[0].GetString(), list[1].GetString(), list[2].GetString(), list[3].GetString());
+                return list;
+            }
+            // マイナーセブンス
+            else if (_third == Pitch.Minor &&
+                     _fifth == Pitch.Parfect &&
+                     _seventh == Pitch.Minor)
+            {
+                var list = Minor7th();
+                Console.WriteLine("構成音は、{0}、{1}、{2}、{3}です。", list[0].GetString(), list[1].GetString(), list[2].GetString(), list[3].GetString());
+                return list;
+            }
+            // マイナーセブンスフラットファイブ
+            else if (_third == Pitch.Minor &&
+                     _fifth == Pitch.Diminished &&
+                     _seventh == Pitch.Minor)
+            {
+                var list = HalfDiminish();
+                Console.WriteLine("構成音は、{0}、{1}、{2}、{3}です。", list[0].GetString(), list[1].GetString(), list[2].GetString(), list[3].GetString());
+                return list;
+            }
+            // ディミニッシュ
+            else if (_third == Pitch.Minor &&
+                     _fifth == Pitch.Diminished &&
+                     _seventh == Pitch.Diminished)
+            {
+                var list = Diminish();
+                Console.WriteLine("構成音は、{0}、{1}、{2}、{3}です。", list[0].GetString(), list[1].GetString(), list[2].GetString(), list[3].GetString());
+                return list;
+            }
+
+            return null;
         }
 
         /// <summary>
         /// 長三和音を返却するメソッド
         /// </summary>
         /// <returns>コードトーン</returns>
-        public List<Tone> MajorTriad() 
+        private List<Tone> MajorTriad() 
         { 
             _tone.Clear();
 
@@ -38,7 +122,7 @@
         /// 短三和音を返却するメソッド
         /// </summary>
         /// <returns>コードトーン</returns>
-        public List<Tone> MinorTriad()
+        private List<Tone> MinorTriad()
         {
             _tone.Clear();
 
@@ -58,7 +142,7 @@
         /// 長七和音を返却するメソッド
         /// </summary>
         /// <returns>コードトーン</returns>
-        public List<Tone> Major7th()
+        private List<Tone> Major7th()
         {
             _tone.Clear();
 
@@ -81,7 +165,7 @@
         /// 属七和音を返却するメソッド
         /// </summary>
         /// <returns>コードトーン</returns>
-        public List<Tone> Dominant7th()
+        private List<Tone> Dominant7th()
         {
             _tone.Clear();
 
@@ -104,7 +188,7 @@
         /// 短七和音を返却するメソッド
         /// </summary>
         /// <returns>コードトーン</returns>
-        public List<Tone> Minor7th()
+        private List<Tone> Minor7th()
         {
             _tone.Clear();
 
@@ -130,7 +214,7 @@
         /// マイナーセブンスフラットファイブまたはハーフディミニッシュとも呼称される
         /// </remarks>
         /// <returns>コードトーン</returns>
-        public List<Tone> HalfDiminish()
+        private List<Tone> HalfDiminish()
         {
             _tone.Clear();
 
@@ -156,7 +240,7 @@
         /// ディミニッシュとも呼称される
         /// </remarks>
         /// <returns>コードトーン</returns>
-        public List<Tone> Diminish()
+        private List<Tone> Diminish()
         {
             _tone.Clear();
 
@@ -217,12 +301,36 @@
 
             // 1オクターブ内に収まるように調整
             var ret = (tone + interval);
-            while (tone + interval > Tone.HiC)
+            while (ret > Tone.HiC)
             {
                 ret -= Tone.HiC;
             }
 
             return ret;
         }
+
+        /// <summary>
+        /// 列挙型を楽譜記号に変換する拡張メソッド
+        /// </summary>
+        /// <param name="tone">this</param>
+        /// <returns>楽譜記号</returns>
+        /// <exception cref="InvalidEnumArgumentException">不正な列挙型の例外</exception>
+        public static string GetString(this Tone tone) 
+            => tone switch {
+                Tone.C => "C",
+                Tone.CSharp => "C#",
+                Tone.D => "D",
+                Tone.DSharp => "D#",
+                Tone.E => "E",
+                Tone.F => "F",
+                Tone.FSharp => "F#",
+                Tone.G => "G",
+                Tone.GSharp => "G#",
+                Tone.A => "A",
+                Tone.ASharp => "A#",
+                Tone.B => "B",
+                Tone.HiC => "HiC",
+                _ => throw new InvalidEnumArgumentException()};
+        
     }
 }
