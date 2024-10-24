@@ -47,6 +47,11 @@ namespace ChordTone.Enums
                 ret -= Tone.HiC;
             }
 
+            while ( ret <= Tone.C)
+            {
+                ret += (int)Tone.HiC;
+            }
+
             return ret;
         }
 

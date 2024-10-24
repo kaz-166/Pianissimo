@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kikuc\\source\\repos\\ChordTone\\ChordTone\\ChordTone.csproj": {}
+    "C:\\Users\\kikuc\\source\\repos\\CodeTone2\\Pianissimo\\ChordTone\\ChordTone.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kikuc\\source\\repos\\ChordTone\\ChordTone\\ChordTone.csproj": {
+    "C:\\Users\\kikuc\\source\\repos\\CodeTone2\\Pianissimo\\ChordTone\\ChordTone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kikuc\\source\\repos\\ChordTone\\ChordTone\\ChordTone.csproj",
+        "projectUniqueName": "C:\\Users\\kikuc\\source\\repos\\CodeTone2\\Pianissimo\\ChordTone\\ChordTone.csproj",
         "projectName": "ChordTone",
-        "projectPath": "C:\\Users\\kikuc\\source\\repos\\ChordTone\\ChordTone\\ChordTone.csproj",
+        "projectPath": "C:\\Users\\kikuc\\source\\repos\\CodeTone2\\Pianissimo\\ChordTone\\ChordTone.csproj",
         "packagesPath": "C:\\Users\\kikuc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kikuc\\source\\repos\\ChordTone\\ChordTone\\obj\\",
+        "outputPath": "C:\\Users\\kikuc\\source\\repos\\CodeTone2\\Pianissimo\\ChordTone\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
