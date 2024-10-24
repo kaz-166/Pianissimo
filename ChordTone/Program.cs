@@ -1,5 +1,4 @@
-﻿
-using ChordTone;
+﻿using ChordTone.Classes;
 while (true) 
 {
     Console.WriteLine("コードネームを入力してください。");
