@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChordTone", "ChordTone\ChordTone.csproj", "{91177C95-5DAB-43DD-A963-48859F252086}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91177C95-5DAB-43DD-A963-48859F252086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91177C95-5DAB-43DD-A963-48859F252086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91177C95-5DAB-43DD-A963-48859F252086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91177C95-5DAB-43DD-A963-48859F252086}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {712CFE4D-9569-4370-A940-C9FDFBE3D900}
+	EndGlobalSection
+EndGlobal
