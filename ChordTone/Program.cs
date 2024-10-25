@@ -1,11 +1,11 @@
 ﻿using ChordTone.Classes;
 using ChordTone.Enums;
+using ChordTone.ValueObjects;
+
 while (true) 
 {
     Console.WriteLine("コードネームを入力してください。");
-    var input = Console.ReadLine();
-
-    var chord = new Chord(Parser.Parse(input));
+    var chord = new ChordValue(Parser.Parse(Console.ReadLine()));
 
     var chordTones = chord.CodeTones();
 

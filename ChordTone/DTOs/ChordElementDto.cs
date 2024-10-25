@@ -1,5 +1,4 @@
-﻿using ChordTone.Classes;
-using ChordTone.Enums;
+﻿using ChordTone.Enums;
 
 namespace ChordTone.DTOs
 {
@@ -10,7 +9,7 @@ namespace ChordTone.DTOs
     /// <param name="third">三度音程</param>
     /// <param name="fifth">五度音程</param>
     /// <param name="seventh">七度音程</param>
-    public class PitchDto(Tone root, Pitch third, Pitch fifth, Pitch seventh)
+    public class ChordElementDto(Tone root, Pitch third, Pitch fifth, Pitch seventh)
     {
         /// <summary>
         /// ルート音

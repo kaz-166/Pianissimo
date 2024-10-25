@@ -32,13 +32,11 @@ namespace ChordTone.Enums
         /// </summary>
         /// <param name="tone">this</param>
         /// <param name="interval">度数</param>
-        /// <returns>〇度上(または下)の音階</returns>
+        /// <returns>指定された度数上(または下)の音階</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static Tone Get(this Tone tone, int interval)
         {
-            // いったんは〇度上のみを取得可能にする制限をつける
-            // TODO: 負の度数(〇度下)にも対応
-            if (interval < 0) throw new ArgumentOutOfRangeException();
+            ArgumentOutOfRangeException.ThrowIfNegative(interval);
 
             // 1オクターブ内に収まるように調整
             var ret = tone + interval;
@@ -47,7 +45,7 @@ namespace ChordTone.Enums
                 ret -= Tone.HiC;
             }
 
-            while ( ret <= Tone.C)
+            while (ret <= Tone.C)
             {
                 ret += (int)Tone.HiC;
             }
@@ -76,9 +74,8 @@ namespace ChordTone.Enums
                 Tone.A => "A",
                 Tone.ASharp => "A#",
                 Tone.B => "B",
-                Tone.HiC => "HiC",
+                Tone.HiC => "C",
                 _ => throw new InvalidEnumArgumentException()
             };
-
     }
 }

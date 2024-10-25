@@ -12,17 +12,17 @@ namespace ChordTone.Classes
     public static class Parser
     {
         /// <summary>
-        /// 入力されたコードネーム構文解析するメソッド
+        /// 入力されたコードネーム構文解析し、コード構成を解釈するメソッド
         /// </summary>
-        /// <param name="chordName">コードネーム</param>
-        /// <returns>構成音の長短増減指示DTO</returns>
+        /// <param name="chordName">コードネーム文字列</param>
+        /// <returns>コード構成DTO</returns>
         /// <exception cref="InvalidDataException">不正な音階名が入力された場合の例外</exception>
         /// <exception cref="ArgumentException">#の臨時記号がつけることのできない音階につけられていた場合の例外</exception>
-        public static PitchDto Parse(string chordName)
+        public static ChordElementDto Parse(string chordName)
         {
             int ind = 0;
-            // 1文字目～2文字目：ルート音
-            // TODO: かなりゴリ押しでいくので、あとでスマートな形にリファクタする
+
+            // 1文字目：ルート音
             var root = chordName[ind..(ind + 1)] switch
             {
                 "C" => Tone.C,
@@ -36,10 +36,10 @@ namespace ChordTone.Classes
             };
             ind++;
 
-            // ２文字目に臨時記号がついていた場合の処理
+            // ２文字目：臨時記号
             if (chordName.Length >= ind + 1 && chordName[ind..(ind + 1)].Equals("#"))
             {
-                // 半音上げる
+                // シャープの場合は半音上げる
                 if (root != Tone.E && root != Tone.B)
                 {
                     root = root.Get(1);
@@ -53,54 +53,57 @@ namespace ChordTone.Classes
             }
             // TODO: ♭の処理
 
-            // できたらもう少しエレガントに書きたいところ
-            PitchDto instractor;
+            ChordElementDto chordElement;
             if (chordName.Length < ind + 1)
             {
-                instractor = new PitchDto(root, Pitch.Major, Pitch.Parfect, Pitch.Omit);
+                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Parfect, Pitch.Omit);
             }
             else if (chordName.Length == ind + 1 && chordName[ind..(ind + 1)].Equals("m"))
             {
-                instractor = new PitchDto(root, Pitch.Minor, Pitch.Parfect, Pitch.Omit);
+                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Parfect, Pitch.Omit);
             }
             else if (chordName.Length == ind + 1 && chordName[ind..(ind + 1)].Equals("7"))
             {
-                instractor = new PitchDto(root, Pitch.Major, Pitch.Parfect, Pitch.Minor);
+                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Parfect, Pitch.Minor);
             }
             else if (chordName.Length == ind + 2 && chordName[ind..(ind + 2)].Equals("m7"))
             {
-                instractor = new PitchDto(root, Pitch.Minor, Pitch.Parfect, Pitch.Minor);
+                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Parfect, Pitch.Minor);
             }
             else if (chordName.Length == ind + 2 && chordName[ind..(ind + 2)].Equals("M7"))
             {
-                instractor = new PitchDto(root, Pitch.Major, Pitch.Parfect, Pitch.Major);
+                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Parfect, Pitch.Major);
             }
             else if (chordName.Length == ind + 4 && chordName[ind..(ind + 4)].Equals("Maj7"))
             {
-                instractor = new PitchDto(root, Pitch.Major, Pitch.Parfect, Pitch.Major);
+                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Parfect, Pitch.Major);
+            }
+            else if (chordName.Length == ind + 2 && chordName[ind..(ind + 2)].Equals("△7"))
+            {
+                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Parfect, Pitch.Major);
             }
             else if (chordName.Length == ind + 3 && chordName[ind..(ind + 3)].Equals("mM7"))
             {
-                instractor = new PitchDto(root, Pitch.Minor, Pitch.Parfect, Pitch.Major);
+                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Parfect, Pitch.Major);
             }
             else if (chordName.Length == ind + 4 && chordName[ind..(ind + 4)].Equals("m7-5"))
             {
-                instractor = new PitchDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Minor);
+                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Minor);
             }
             else if (chordName.Length == ind + 4 && chordName[ind..(ind + 4)].Equals("m7b5"))
             {
-                instractor = new PitchDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Minor);
+                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Minor);
             }
             else if (chordName.Length == ind + 3 && chordName[ind..(ind + 3)].Equals("dim"))
             {
-                instractor = new PitchDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Diminished);
+                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Diminished);
             }
             else
             {
                 throw new ArgumentException("構文エラーです。");
             }
 
-            return instractor;
+            return chordElement;
         }
     }
 }
