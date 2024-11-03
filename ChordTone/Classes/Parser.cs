@@ -56,45 +56,45 @@ namespace ChordTone.Classes
             ChordElementDto chordElement;
             if (chordName.Length < ind + 1)
             {
-                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Parfect, Pitch.Omit);
+                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Perfect, Pitch.Omit);
             }
-            else if (chordName.Length == ind + 1 && chordName[ind..(ind + 1)].Equals("m"))
+            else if (ChordNameMatcher(chordName, "m", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Parfect, Pitch.Omit);
+                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Perfect, Pitch.Omit);
             }
-            else if (chordName.Length == ind + 1 && chordName[ind..(ind + 1)].Equals("7"))
+            else if (ChordNameMatcher(chordName, "7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Parfect, Pitch.Minor);
+                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Perfect, Pitch.Minor);
             }
-            else if (chordName.Length == ind + 2 && chordName[ind..(ind + 2)].Equals("m7"))
+            else if (ChordNameMatcher(chordName, "m7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Parfect, Pitch.Minor);
+                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Perfect, Pitch.Minor);
             }
-            else if (chordName.Length == ind + 2 && chordName[ind..(ind + 2)].Equals("M7"))
+            else if (ChordNameMatcher(chordName, "M7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Parfect, Pitch.Major);
+                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Perfect, Pitch.Major);
             }
-            else if (chordName.Length == ind + 4 && chordName[ind..(ind + 4)].Equals("Maj7"))
+            else if (ChordNameMatcher(chordName, "Maj7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Parfect, Pitch.Major);
+                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Perfect, Pitch.Major);
             }
-            else if (chordName.Length == ind + 2 && chordName[ind..(ind + 2)].Equals("△7"))
+            else if (ChordNameMatcher(chordName, "△7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Parfect, Pitch.Major);
+                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Perfect, Pitch.Major);
             }
-            else if (chordName.Length == ind + 3 && chordName[ind..(ind + 3)].Equals("mM7"))
+            else if (ChordNameMatcher(chordName, "mM7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Parfect, Pitch.Major);
+                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Perfect, Pitch.Major);
             }
-            else if (chordName.Length == ind + 4 && chordName[ind..(ind + 4)].Equals("m7-5"))
-            {
-                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Minor);
-            }
-            else if (chordName.Length == ind + 4 && chordName[ind..(ind + 4)].Equals("m7b5"))
+            else if (ChordNameMatcher(chordName, "m5-7", ind))
             {
                 chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Minor);
             }
-            else if (chordName.Length == ind + 3 && chordName[ind..(ind + 3)].Equals("dim"))
+            else if (ChordNameMatcher(chordName, "m5b7", ind))
+            {
+                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Minor);
+            }
+            else if (ChordNameMatcher(chordName, "dim", ind))
             {
                 chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Diminished);
             }
@@ -105,5 +105,17 @@ namespace ChordTone.Classes
 
             return chordElement;
         }
+
+        /// <summary>
+        /// 対象の文字列のマッチするか検査します
+        /// </summary>
+        /// <param name="chordName">入力文字列</param>
+        /// <param name="CompareName">検査対象文字列</param>
+        /// <param name="index">インデックスう</param>
+        /// <returns>合致していればTrueしていなければ、False<returns>
+
+        private static bool ChordNameMatcher(string chordName, string CompareName, int index)
+        =>
+            chordName.Length == index + CompareName.Length && chordName[index..(index + CompareName.Length)].Equals(CompareName);
     }
 }

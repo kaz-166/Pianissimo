@@ -48,7 +48,7 @@ namespace ChordTone.ValueObjects
             // ５度
             switch (_fifth)
             {
-                case Pitch.Parfect:
+                case Pitch.Perfect:
                     _tone.Add(_key.Get(7));
                     break;
                 case Pitch.Diminished:
