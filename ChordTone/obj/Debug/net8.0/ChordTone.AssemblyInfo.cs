@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChordTone")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8787f7587b15ce6719e0285d534b370ffc25f8ed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2627d2f89d854ac2f119b143a62ed4a906e0520")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChordTone")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChordTone")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
