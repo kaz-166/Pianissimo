@@ -10,22 +10,22 @@ namespace ChordTone.Domains.Chords.ValueObjects.ChordValue
         /// <summary>
         /// ルート音程
         /// </summary>
-        public Tone Root { get; protected set; }
+        protected Tone Root { get; set; }
 
         /// <summary>
         /// ３度音程
         /// </summary>
-        public Pitch Third { get; }
+        private Pitch _third { get; }
 
         /// <summary>
         /// ５度音程
         /// </summary>
-        public Pitch Fifth { get; }
+        private Pitch _fifth { get; }
 
         /// <summary>
         /// ７度音程
         /// </summary>
-        public Pitch Seventh { get; }
+        private Pitch _seventh { get; }
 
         /// <summary>
         /// コードトーン
@@ -43,15 +43,15 @@ namespace ChordTone.Domains.Chords.ValueObjects.ChordValue
         {
 
             Root = root;
-            Third = third;
-            Fifth = fifth;
-            Seventh = seventh;
+            _third = third;
+            _fifth = fifth;
+            _seventh = seventh;
 
             // ルート音
             _tone.Add(Root);
 
             // ３度
-            switch (Third)
+            switch (_third)
             {
                 case Pitch.Major:
                     _tone.Add(Root.Get(4));
@@ -62,7 +62,7 @@ namespace ChordTone.Domains.Chords.ValueObjects.ChordValue
             }
 
             // ５度
-            switch (Fifth)
+            switch (_fifth)
             {
                 case Pitch.Perfect:
                     _tone.Add(Root.Get(7));
@@ -76,7 +76,7 @@ namespace ChordTone.Domains.Chords.ValueObjects.ChordValue
             }
 
             // ７度
-            switch (Seventh)
+            switch (_seventh)
             {
                 case Pitch.Major:
                     _tone.Add(Root.Get(11));
