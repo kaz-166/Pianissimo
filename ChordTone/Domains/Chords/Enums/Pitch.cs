@@ -1,4 +1,4 @@
-﻿namespace ChordTone.Enums
+﻿namespace ChordTone.Domains.Chords.Enums
 {
     /// <summary>
     /// 音程の長短増減指示 列挙型

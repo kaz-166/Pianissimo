@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ChordTone.Enums
+namespace ChordTone.Domains.Chords.Enums
 {
     /// <summary>
     /// 音階の列挙型

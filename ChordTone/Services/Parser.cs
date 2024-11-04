@@ -1,7 +1,8 @@
-﻿using ChordTone.DTOs;
-using ChordTone.Enums;
+﻿using ChordTone.Domains.Chords.Enums;
+using ChordTone.Domains.Chords.ValueObjects.ChordValue;
+using ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritance;
 
-namespace ChordTone.Classes
+namespace ChordTone.Services
 {
     /// <summary>
     /// パーサクラス
@@ -18,7 +19,7 @@ namespace ChordTone.Classes
         /// <returns>コード構成DTO</returns>
         /// <exception cref="InvalidDataException">不正な音階名が入力された場合の例外</exception>
         /// <exception cref="ArgumentException">#の臨時記号がつけることのできない音階につけられていた場合の例外</exception>
-        public static ChordElementDto Parse(string chordName)
+        public static ChordBaseValue Parse(string chordName)
         {
             int ind = 0;
 
@@ -53,50 +54,50 @@ namespace ChordTone.Classes
             }
             // TODO: ♭の処理
 
-            ChordElementDto chordElement;
+            ChordBaseValue chordElement;
             if (chordName.Length < ind + 1)
             {
-                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Perfect, Pitch.Omit);
+                chordElement = new MajorTriadValue(root);
             }
             else if (ChordNameMatcher(chordName, "m", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Perfect, Pitch.Omit);
+                chordElement = new MinorTriadValue(root);
             }
             else if (ChordNameMatcher(chordName, "7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Perfect, Pitch.Minor);
+                chordElement = new Dominant7thValue(root);
             }
             else if (ChordNameMatcher(chordName, "m7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Perfect, Pitch.Minor);
+                chordElement = new Minor7thValue(root);
             }
             else if (ChordNameMatcher(chordName, "M7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Perfect, Pitch.Major);
+                chordElement = new Major7thValue(root);
             }
             else if (ChordNameMatcher(chordName, "Maj7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Perfect, Pitch.Major);
+                chordElement = new Major7thValue(root);
             }
             else if (ChordNameMatcher(chordName, "△7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Major, Pitch.Perfect, Pitch.Major);
+                chordElement = new Major7thValue(root);
             }
             else if (ChordNameMatcher(chordName, "mM7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Perfect, Pitch.Major);
+                chordElement = new MinorMajor7thValue(root);
             }
             else if (ChordNameMatcher(chordName, "m5-7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Minor);
+                chordElement = new HalfDiminishValue(root);
             }
             else if (ChordNameMatcher(chordName, "m5b7", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Minor);
+                chordElement = new HalfDiminishValue(root);
             }
             else if (ChordNameMatcher(chordName, "dim", ind))
             {
-                chordElement = new ChordElementDto(root, Pitch.Minor, Pitch.Diminished, Pitch.Diminished);
+                chordElement = new DiminishValue(root);
             }
             else
             {
