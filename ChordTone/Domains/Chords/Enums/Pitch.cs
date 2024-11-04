@@ -5,11 +5,34 @@
     /// </summary>
     public enum Pitch
     {
-        Omit,       // 除外
-        Major,      // 長音程
-        Minor,      // 短音程
-        Perfect,    // 完全音程
-        Diminished, // 減音程
-        Augmented   // 増音程       
+        /// <summary>
+        /// 除外
+        /// </summary>
+        Omit,
+
+        /// <summary>
+        /// 長音程
+        /// </summary>
+        Major,
+
+        /// <summary>
+        /// 短音程
+        /// </summary>
+        Minor,
+
+        /// <summary>
+        /// 完全音程
+        /// </summary>
+        Perfect,
+
+        /// <summary>
+        /// 減音程
+        /// </summary>
+        Diminished,
+
+        /// <summary>
+        /// 増音程
+        /// </summary>
+        Augmented      
     }
 }

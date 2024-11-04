@@ -1,4 +1,5 @@
-﻿using ChordTone.Domains.Chords.Enums;
+﻿using ChordTone.Domains.Chords.Consts;
+using ChordTone.Domains.Chords.Enums;
 using ChordTone.Domains.Chords.ValueObjects.ChordValue;
 using ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritance;
 
@@ -59,49 +60,49 @@ namespace ChordTone.Services
             {
                 chordElement = new MajorTriadValue(root);
             }
-            else if (ChordNameMatcher(chordName, "m", ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.MINOR_TRIAD, ind))
             {
                 chordElement = new MinorTriadValue(root);
             }
-            else if (ChordNameMatcher(chordName, "7", ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.DOMINANT_7TH, ind))
             {
                 chordElement = new Dominant7thValue(root);
             }
-            else if (ChordNameMatcher(chordName, "m7", ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.MINOR_7TH, ind))
             {
                 chordElement = new Minor7thValue(root);
             }
-            else if (ChordNameMatcher(chordName, "M7", ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.MAJOR_7TH, ind))
             {
                 chordElement = new Major7thValue(root);
             }
-            else if (ChordNameMatcher(chordName, "Maj7", ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.MAJOR_7TH_ALTER1, ind))
             {
                 chordElement = new Major7thValue(root);
             }
-            else if (ChordNameMatcher(chordName, "△7", ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.MAJOR_7TH_ALTER2, ind))
             {
                 chordElement = new Major7thValue(root);
             }
-            else if (ChordNameMatcher(chordName, "mM7", ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.MINOR_MAJOR_7TH, ind))
             {
                 chordElement = new MinorMajor7thValue(root);
             }
-            else if (ChordNameMatcher(chordName, "m5-7", ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.MINOR_7TH_FLAT_5, ind))
             {
                 chordElement = new HalfDiminishValue(root);
             }
-            else if (ChordNameMatcher(chordName, "m5b7", ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.MINOR_7TH_FLAT_5_ALTER1, ind))
             {
                 chordElement = new HalfDiminishValue(root);
             }
-            else if (ChordNameMatcher(chordName, "dim", ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.DIMINISH, ind))
             {
                 chordElement = new DiminishValue(root);
             }
             else
             {
-                throw new ArgumentException("構文エラーです。");
+                throw new ArgumentException("不正なコードのため解析できませんでした。");
             }
 
             return chordElement;
@@ -112,7 +113,7 @@ namespace ChordTone.Services
         /// </summary>
         /// <param name="chordName">入力文字列</param>
         /// <param name="CompareName">検査対象文字列</param>
-        /// <param name="index">インデックスう</param>
+        /// <param name="index">インデックス</param>
         /// <returns>合致していればTrueしていなければ、False<returns>
 
         private static bool ChordNameMatcher(string chordName, string CompareName, int index)

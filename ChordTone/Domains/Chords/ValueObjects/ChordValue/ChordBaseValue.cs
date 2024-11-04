@@ -3,12 +3,12 @@
 namespace ChordTone.Domains.Chords.ValueObjects.ChordValue
 {
     /// <summary>
-    /// 構成音の長短増減情報を格納するData Transfer Object基底クラス
+    /// 和音基底クラス
     /// </summary>
     public class ChordBaseValue
     {
         /// <summary>
-        /// ルート音
+        /// ルート音程
         /// </summary>
         public Tone Root { get; protected set; }
 
@@ -28,14 +28,14 @@ namespace ChordTone.Domains.Chords.ValueObjects.ChordValue
         public Pitch Seventh { get; }
 
         /// <summary>
-        /// 度数のリスト
+        /// コードトーン
         /// </summary>
         private List<Tone> _tone = [];
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        /// <param name="root">ルート音</param>
+        /// <param name="root">ルート音程</param>
         /// <param name="third">３度音程</param>
         /// <param name="fifth">５度音程</param>
         /// <param name="seventh">７度音程</param>
@@ -93,7 +93,7 @@ namespace ChordTone.Domains.Chords.ValueObjects.ChordValue
         }
 
         /// <summary>
-        /// コードトーンを取得するメソッド
+        /// コードトーンを取得する
         /// </summary>
         /// <returns>コードトーン</returns>
         public List<Tone> CodeTones() => _tone;

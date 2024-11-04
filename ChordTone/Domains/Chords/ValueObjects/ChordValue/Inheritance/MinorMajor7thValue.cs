@@ -1,15 +1,14 @@
 ﻿using ChordTone.Domains.Chords.Enums;
-using ChordTone.Domains.Chords.ValueObjects.ChordValue;
 
 namespace ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritance
 {
     /// <summary>
-    /// マイナーメジャーセブンスコードDTOクラス
+    /// 短長七和音　値オブジェクト
     /// </summary>
     public class MinorMajor7thValue : ChordBaseValue
     {
         /// <summary>
-        /// コンストラクタ
+        /// 短長七和音　値オブジェクト　コンストラクタ
         /// </summary>
         /// <param name="root">ルート音</param>
         public MinorMajor7thValue(Tone root) : base(root, Pitch.Minor, Pitch.Perfect, Pitch.Major)
