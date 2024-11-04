@@ -2,10 +2,15 @@
 
 namespace ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritance
 {
-    // Sus4和音 値オブジェクト
+    /// <summary>
+    /// Sus4和音 値オブジェクト
+    /// </summary>
     public class Suspended4thValue : ChordBaseValue
     {
-        // Sus4和音 値オブジェクト　コンストラクタ
+        /// <summary>
+        /// Sus4和音 値オブジェクト　コンストラクタ
+        /// </summary>
+        /// <param name="root">ルート音</param>
         public Suspended4thValue(Tone root) : base(root, Pitch.Augmented, Pitch.Perfect, Pitch.Omit)
         {
             Root = root;
