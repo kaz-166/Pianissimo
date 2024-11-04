@@ -23,7 +23,7 @@ namespace ChordTone.Services
         public static ChordBaseValue Parse(string chordName)
         {
             int ind = 0;
-
+            #region Phase1 ルート音の解析
             // 1文字目：ルート音
             var root = chordName[ind..(ind + 1)] switch
             {
@@ -37,7 +37,8 @@ namespace ChordTone.Services
                 _ => throw new InvalidDataException($"{chordName[ind..(ind + 1)]}は音階名に存在しません。")
             };
             ind++;
-
+            #endregion
+            #region Phase2 臨時記号の解析
             // ２文字目：臨時記号
             if (chordName.Length >= ind + 1 && chordName[ind..(ind + 1)].Equals("#"))
             {
@@ -62,11 +63,18 @@ namespace ChordTone.Services
                 }
                 else
                 {
-                    throw new InvalidDataException($"{root}には#の臨時記号をつけることはできません。");
+                    throw new InvalidDataException($"{root}にはbの臨時記号をつけることはできません。");
                 }
             }
-
-
+            #endregion
+            #region Phase3 付加情報の解析
+            /// コードの生成規則は、バッカス＝ナウア記法に則ると下記のように表せる。
+            /// 
+            /// コードネーム文字列を<ChordName>とする。
+            /// <ChordName> := <Root><Attributes>
+            /// <Root> := C|D|E|F|G|A|B [#|b]
+            /// <Attributes> := [m|M|mM|Maj|△|aug|dim|7|b5|-5]
+            /// 
             ChordBaseValue chordElement;
             if (chordName.Length < ind + 1)
             {
@@ -124,7 +132,7 @@ namespace ChordTone.Services
             {
                 throw new ArgumentException("不正なコードのため解析できませんでした。");
             }
-
+            #endregion
             return chordElement;
         }
 
