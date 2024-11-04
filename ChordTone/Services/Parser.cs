@@ -52,8 +52,20 @@ namespace ChordTone.Services
                     throw new InvalidDataException($"{root}には#の臨時記号をつけることはできません。");
                 }
 
+            } else if (chordName.Length >= ind + 1 && chordName[ind..(ind + 1)].Equals("b"))
+                {
+                // ♭の場合は半音下げる
+                if (root != Tone.F && root != Tone.C)
+                {
+                    root = root.Get(-1);
+                    ind++;
+                }
+                else
+                {
+                    throw new InvalidDataException($"{root}には#の臨時記号をつけることはできません。");
+                }
             }
-            // TODO: ♭の処理
+
 
             ChordBaseValue chordElement;
             if (chordName.Length < ind + 1)
