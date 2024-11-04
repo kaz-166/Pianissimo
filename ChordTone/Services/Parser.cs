@@ -24,7 +24,6 @@ namespace ChordTone.Services
         {
             int ind = 0;
             #region Phase1 ルート音の解析
-            // 1文字目：ルート音
             var root = chordName[ind..(ind + 1)] switch
             {
                 "C" => Tone.C,
@@ -39,7 +38,6 @@ namespace ChordTone.Services
             ind++;
             #endregion
             #region Phase2 臨時記号の解析
-            // ２文字目：臨時記号
             if (chordName.Length >= ind + 1 && chordName[ind..(ind + 1)].Equals("#"))
             {
                 // シャープの場合は半音上げる
@@ -50,6 +48,8 @@ namespace ChordTone.Services
                 }
                 else
                 {
+                    /// EとBの音は半音上の音がすでにスケール上に存在するため
+                    /// #の臨時記号を付加することができない。
                     throw new InvalidDataException($"{root}には#の臨時記号をつけることはできません。");
                 }
 
@@ -62,7 +62,8 @@ namespace ChordTone.Services
                     ind++;
                 }
                 else
-                {
+                {   /// CとFの音は半音下の音がすでにスケール上に存在するため
+                    /// bの臨時記号を付加することができない。
                     throw new InvalidDataException($"{root}にはbの臨時記号をつけることはできません。");
                 }
             }
@@ -137,13 +138,12 @@ namespace ChordTone.Services
         }
 
         /// <summary>
-        /// 対象の文字列のマッチするか検査します
+        /// 対象の文字列とマッチするか検査します
         /// </summary>
         /// <param name="chordName">入力文字列</param>
         /// <param name="CompareName">検査対象文字列</param>
         /// <param name="index">インデックス</param>
         /// <returns>合致していればTrueしていなければ、False<returns>
-
         private static bool ChordNameMatcher(string chordName, string CompareName, int index)
         =>
             chordName.Length == index + CompareName.Length && chordName[index..(index + CompareName.Length)].Equals(CompareName);
