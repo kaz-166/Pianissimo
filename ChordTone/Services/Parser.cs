@@ -6,18 +6,18 @@ using ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritance;
 namespace ChordTone.Services
 {
     /// <summary>
-    /// パーサクラス
+    /// パーササービス
     /// </summary>
     /// <remarks>
-    /// コードネームを解析し、各構成音に対して長短増減の情報を付加したものを返す
+    /// コードネームを解析するサービスを提供する
     /// </remarks>
     public static class Parser
     {
         /// <summary>
-        /// 入力されたコードネーム構文解析し、コード構成を解釈するメソッド
+        /// 入力されたコードネーム構文解析し、コード構成を解釈する
         /// </summary>
         /// <param name="chordName">コードネーム文字列</param>
-        /// <returns>コード構成DTO</returns>
+        /// <returns>和音値オブジェクト</returns>
         /// <exception cref="InvalidDataException">不正な音階名が入力された場合の例外</exception>
         /// <exception cref="ArgumentException">#の臨時記号がつけることのできない音階につけられていた場合の例外</exception>
         public static ChordBaseValue Parse(string chordName)
