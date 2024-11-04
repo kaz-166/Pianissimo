@@ -11,6 +11,11 @@
         public const string MINOR_TRIAD = "m";
 
         /// <summary>
+        /// 増五和音
+        /// </summary>
+        public const string AUGMENTED_CHORD = "aug";
+
+        /// <summary>
         /// 属七和音
         /// </summary>
         public const string DOMINANT_7TH = "7";
@@ -54,5 +59,10 @@
         /// 減七和音
         /// </summary>
         public const string DIMINISHED = "dim";
+
+        /// <summary>
+        /// SUS4和音
+        /// </summary>
+        public const string SUSPENDED_4TH = "sus4";
     }
 }

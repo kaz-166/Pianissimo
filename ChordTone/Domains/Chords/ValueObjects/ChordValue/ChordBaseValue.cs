@@ -53,6 +53,9 @@ namespace ChordTone.Domains.Chords.ValueObjects.ChordValue
             // ３度
             switch (_third)
             {
+                case Pitch.Augmented:
+                    _tone.Add(Root.Get(5));
+                    break;
                 case Pitch.Major:
                     _tone.Add(Root.Get(4));
                     break;

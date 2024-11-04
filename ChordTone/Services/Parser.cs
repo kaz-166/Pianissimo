@@ -112,6 +112,14 @@ namespace ChordTone.Services
             {
                 chordElement = new DiminishValue(root);
             }
+            else if (ChordNameMatcher(chordName, ChordAttributes.AUGMENTED_CHORD, ind))
+            {
+                chordElement = new AugmentValue(root);
+            }
+            else if (ChordNameMatcher(chordName, ChordAttributes.SUSPENDED_4TH, ind))
+            {
+                chordElement = new Suspended4thValue(root);
+            }
             else
             {
                 throw new ArgumentException("不正なコードのため解析できませんでした。");
