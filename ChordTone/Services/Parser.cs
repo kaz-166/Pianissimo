@@ -88,15 +88,15 @@ namespace ChordTone.Services
             {
                 chordElement = new MinorMajor7thValue(root);
             }
-            else if (ChordNameMatcher(chordName, ChordAttributes.MINOR_7TH_FLAT_5, ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.MINOR_7TH_FLATTED_5, ind))
             {
                 chordElement = new HalfDiminishValue(root);
             }
-            else if (ChordNameMatcher(chordName, ChordAttributes.MINOR_7TH_FLAT_5_ALTER1, ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.MINOR_7TH_FLATTED_5_ALTER1, ind))
             {
                 chordElement = new HalfDiminishValue(root);
             }
-            else if (ChordNameMatcher(chordName, ChordAttributes.DIMINISH, ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.DIMINISHED, ind))
             {
                 chordElement = new DiminishValue(root);
             }
