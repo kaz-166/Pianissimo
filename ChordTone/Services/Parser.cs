@@ -34,7 +34,7 @@ namespace ChordTone.Services
                 "G" => Tone.G,
                 "A" => Tone.A,
                 "B" => Tone.B,
-                _ => throw new InvalidDataException("不正な音階名が指定されています。")
+                _ => throw new InvalidDataException($"{chordName[ind..(ind + 1)]}は音階名に存在しません。")
             };
             ind++;
 
@@ -49,7 +49,7 @@ namespace ChordTone.Services
                 }
                 else
                 {
-                    throw new InvalidDataException("その音階には#の臨時記号をつけることはできません。");
+                    throw new InvalidDataException($"{root}には#の臨時記号をつけることはできません。");
                 }
 
             }
