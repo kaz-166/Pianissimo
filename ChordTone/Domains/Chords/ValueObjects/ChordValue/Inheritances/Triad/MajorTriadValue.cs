@@ -1,6 +1,6 @@
 ﻿using ChordTone.Domains.Chords.Enums;
 
-namespace ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritance
+namespace ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritances.Triad
 {
     /// <summary>
     /// 長三和音　値オブジェクト

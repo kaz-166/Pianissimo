@@ -1,8 +1,9 @@
 ﻿using ChordTone.Domains.Chords.Consts;
 using ChordTone.Domains.Chords.Enums;
 using ChordTone.Domains.Chords.ValueObjects.ChordValue;
-using ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritance;
-using ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritances;
+using ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritances.Seventh;
+using ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritances.Tension;
+using ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritances.Triad;
 
 namespace ChordTone.Services
 {

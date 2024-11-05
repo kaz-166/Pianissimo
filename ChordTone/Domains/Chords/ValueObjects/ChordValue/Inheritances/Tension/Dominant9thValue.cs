@@ -1,6 +1,6 @@
 ﻿using ChordTone.Domains.Chords.Enums;
 
-namespace ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritances
+namespace ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritances.Tension
 {
     /// <summary>
     /// テンションコード(9)　値オブジェクト

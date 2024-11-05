@@ -1,6 +1,6 @@
 ﻿using ChordTone.Domains.Chords.Enums;
 
-namespace ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritance
+namespace ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritances.Seventh
 {
     /// <summary>
     /// 属七和音　値オブジェクト
