@@ -23,6 +23,16 @@ while (true)
             chordTones[2].GetString(),
             chordTones[3].GetString());
     }
+    // テンションコード
+    else if (chordTones.Count == 5)
+    {
+        Console.WriteLine("構成音は、{0}、{1}、{2}、{3}、{4}です。",
+            chordTones[0].GetString(),
+            chordTones[1].GetString(),
+            chordTones[2].GetString(),
+            chordTones[3].GetString(),
+            chordTones[4].GetString());
+    }
 }
 
 

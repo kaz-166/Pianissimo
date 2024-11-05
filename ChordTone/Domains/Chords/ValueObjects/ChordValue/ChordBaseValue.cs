@@ -30,7 +30,7 @@ namespace ChordTone.Domains.Chords.ValueObjects.ChordValue
         /// <summary>
         /// コードトーン
         /// </summary>
-        private List<Tone> _tone = [];
+        protected List<Tone> _tone = [];
 
         /// <summary>
         /// コンストラクタ

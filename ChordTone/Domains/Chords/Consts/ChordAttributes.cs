@@ -13,12 +13,22 @@
         /// <summary>
         /// 増五和音
         /// </summary>
-        public const string AUGMENTED_CHORD = "aug";
+        public const string AUGMENTED = "aug";
 
         /// <summary>
         /// 属七和音
         /// </summary>
         public const string DOMINANT_7TH = "7";
+
+        /// <summary>
+        /// 長九和音
+        /// </summary>
+        public const string DOMINANT_9TH = "9";
+
+        /// <summary>
+        /// 長九和音
+        /// </summary>
+        public const string DOMINANT_9TH_ALTER1 = "7(9)";
 
         /// <summary>
         /// 長七和音

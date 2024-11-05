@@ -2,6 +2,7 @@
 using ChordTone.Domains.Chords.Enums;
 using ChordTone.Domains.Chords.ValueObjects.ChordValue;
 using ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritance;
+using ChordTone.Domains.Chords.ValueObjects.ChordValue.Inheritances;
 
 namespace ChordTone.Services
 {
@@ -53,8 +54,9 @@ namespace ChordTone.Services
                     throw new InvalidDataException($"{root}には#の臨時記号をつけることはできません。");
                 }
 
-            } else if (chordName.Length >= ind + 1 && chordName[ind..(ind + 1)].Equals("b"))
-                {
+            } 
+            else if (chordName.Length >= ind + 1 && chordName[ind..(ind + 1)].Equals("b"))
+            {
                 // ♭の場合は半音下げる
                 if (root != Tone.F && root != Tone.C)
                 {
@@ -121,13 +123,21 @@ namespace ChordTone.Services
             {
                 chordElement = new DiminishValue(root);
             }
-            else if (ChordNameMatcher(chordName, ChordAttributes.AUGMENTED_CHORD, ind))
+            else if (ChordNameMatcher(chordName, ChordAttributes.AUGMENTED, ind))
             {
                 chordElement = new AugmentValue(root);
             }
             else if (ChordNameMatcher(chordName, ChordAttributes.SUSPENDED_4TH, ind))
             {
                 chordElement = new Suspended4thValue(root);
+            }
+            else if (ChordNameMatcher(chordName, ChordAttributes.DOMINANT_9TH, ind))
+            {
+                chordElement = new Dominant9thValue(root);
+            }
+            else if (ChordNameMatcher(chordName, ChordAttributes.DOMINANT_9TH_ALTER1, ind))
+            {
+                chordElement = new Dominant9thValue(root);
             }
             else
             {
