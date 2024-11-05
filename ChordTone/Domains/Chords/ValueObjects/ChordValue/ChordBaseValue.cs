@@ -39,6 +39,10 @@ namespace ChordTone.Domains.Chords.ValueObjects.ChordValue
         /// <param name="third">３度音程</param>
         /// <param name="fifth">５度音程</param>
         /// <param name="seventh">７度音程</param>
+        /// <remarks>
+        /// 1オクターブ内に収まるコードを対象としています。
+        /// テンションノートを付加する場合は継承先にて処理が必要になります。
+        /// </remarks>
         public ChordBaseValue(Tone root, Pitch third, Pitch fifth, Pitch seventh)
         {
 

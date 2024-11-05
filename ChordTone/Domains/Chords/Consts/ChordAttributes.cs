@@ -33,7 +33,7 @@
         /// <summary>
         /// 長七和音
         /// </summary>
-        public const string MAJOR_7TH_ALTER1 = "Maj7";
+        public const string MAJOR_7TH_ALTER1 = "maj7";
 
         /// <summary>
         /// 長七和音

@@ -40,7 +40,7 @@ namespace ChordTone.Services
             #region Phase2 臨時記号の解析
             if (chordName.Length >= ind + 1 && chordName[ind..(ind + 1)].Equals("#"))
             {
-                // シャープの場合は半音上げる
+                // #の場合は半音上げる
                 if (root != Tone.E && root != Tone.B)
                 {
                     root = root.Get(1);
@@ -74,7 +74,7 @@ namespace ChordTone.Services
             /// コードネーム文字列を<ChordName>とする。
             /// <ChordName> := <Root><Attributes>
             /// <Root> := C|D|E|F|G|A|B [#|b]
-            /// <Attributes> := [m|M|mM|Maj|△|aug|dim|7|b5|-5]
+            /// <Attributes> := [m|m7|7|M7|mM7|Maj7|△7|aug|dim|m7-5|m7b5|sus4]
             /// 
             ChordBaseValue chordElement;
             if (chordName.Length < ind + 1)
