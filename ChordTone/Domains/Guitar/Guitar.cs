@@ -1,4 +1,5 @@
 ﻿using ChordTone.Domains.Chords.Enums;
+using ChordTone.Domains.Chords.ValueObjects.ChordValue;
 
 namespace ChordTone.Domains.Guitar
 {
@@ -8,7 +9,7 @@ namespace ChordTone.Domains.Guitar
     public class Guitar
     {
         /// <summary>
-        /// 弦
+        /// 弦リストオブジェクト
         /// </summary>
         private List<String> Strings = new();
 
@@ -34,6 +35,9 @@ namespace ChordTone.Domains.Guitar
         /// <summary>
         /// ギタークラス コンストラクタ
         /// </summary>
+        /// <remarks>
+        /// 初期のチューニングを指定しない場合はレギュラーチューニング(E-A-D-G-B-E)になります。
+        /// </remarks>
         public Guitar()
         {
             Strings.Add(new String(Tone.E));
@@ -52,6 +56,8 @@ namespace ChordTone.Domains.Guitar
         /// <param name="flet">フレット数</param>
         /// <returns></returns>
         public Tone Pick(int str, int flet) => Strings[str].Pick(flet);
+
+        }
     }
 
 
