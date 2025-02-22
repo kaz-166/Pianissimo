@@ -71,8 +71,8 @@ namespace ChordTone.Services
                 }
             }
             #endregion
-            #region Phase3 付加情報の解析
 
+            // コードシンボルの解析を行う
             return ParceChordSymbol(ind, chordName, root);
         }
 
