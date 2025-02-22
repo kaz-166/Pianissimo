@@ -3,9 +3,19 @@ using ChordTone.Services;
 
 while (true) 
 {
-    Console.WriteLine("コードネームを入力してください。");
-    var chordTones = Parser.Parse(Console.ReadLine()).CodeTones();
+    List<Tone>? chordTones;
+    var _ = new List<Tone>();
 
+    Console.WriteLine("コードネームを入力してください。");
+    try
+    {
+        chordTones = Parser.Parse(Console.ReadLine()).CodeTones();
+    }
+    catch
+    {
+        break;
+    }
+   
     // 三和音
     if (chordTones.Count == 3)
     {

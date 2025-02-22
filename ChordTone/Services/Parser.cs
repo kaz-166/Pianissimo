@@ -72,6 +72,20 @@ namespace ChordTone.Services
             }
             #endregion
             #region Phase3 付加情報の解析
+
+            return ParceChordSymbol(ind, chordName, root);
+        }
+
+        /// <summary>
+        /// コードシンボルを解析します
+        /// </summary>
+        /// <param name="ind">インデックス</param>
+        /// <param name="chordName">コードネームparam>
+        /// <param name="root">ルート音</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        private static ChordBaseValue ParceChordSymbol(int ind, string chordName, Tone root) 
+        {
             /// コードの生成規則は、バッカス＝ナウア記法に則ると下記のように表せる。
             /// 
             /// コードネーム文字列を<ChordName>とする。
@@ -144,7 +158,7 @@ namespace ChordTone.Services
             {
                 throw new ArgumentException("不正なコードのため解析できませんでした。");
             }
-            #endregion
+
             return chordElement;
         }
 
