@@ -82,8 +82,8 @@ namespace ChordTone.Services
         /// <param name="ind">インデックス</param>
         /// <param name="chordName">コードネームparam>
         /// <param name="root">ルート音</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
+        /// <returns>コードトーンを返却します</returns>
+        /// <exception cref="ArgumentException">不正なコードシンボルが指定されたときの例外</exception>
         private static ChordBaseValue ParceChordSymbol(int ind, string chordName, Tone root) 
         {
             /// コードの生成規則は、バッカス＝ナウア記法に則ると下記のように表せる。
