@@ -77,7 +77,7 @@ namespace ChordTone.Services
             /// コードネーム文字列を<ChordName>とする。
             /// <ChordName> := <Root><Attributes>
             /// <Root> := C|D|E|F|G|A|B [#|b]
-            /// <Attributes> := [m|m7|7|M7|mM7|Maj7|△7|aug|dim|m7-5|m7b5|sus4]
+            /// <Attributes> := [m|m7|7|M7|mM7|maj7|△7|aug|dim|m7-5|m7b5|sus4]
             /// 
             ChordBaseValue chordElement;
             if (chordName.Length < ind + 1)
