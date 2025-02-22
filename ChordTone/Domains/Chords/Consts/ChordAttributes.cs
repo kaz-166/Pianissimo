@@ -11,7 +11,7 @@
         public const string MINOR_TRIAD = "m";
 
         /// <summary>
-        /// 増五和音
+        /// 増三和音
         /// </summary>
         public const string AUGMENTED = "aug";
 
