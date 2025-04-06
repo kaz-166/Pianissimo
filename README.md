@@ -2,6 +2,10 @@
 コード名を入力すると対応するコードトーンを返すCUIプログラムです。
 三和音、四和音に対応しています。  
 テンションコードおよび分数コードは未対応となります。今後拡張予定です。    
+
+This CUI program returns the corresponding chord tone when a chord name(chord symbol) is entered. Triad and 7th chord tones are supported.
+Tension chords（ex. add9 (9) and more...) and fractional chords(slash chords, for example C/E) are not yet supported. Expansion chords are planned for the future.
+
 ![スクリーンショット 2024-10-26 031234](https://github.com/user-attachments/assets/52f50e0f-1f99-4b14-b573-2a264194b0d8)
 
 ## コードネームの構文規則について
