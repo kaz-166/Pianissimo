@@ -74,5 +74,10 @@
         /// SUS4和音
         /// </summary>
         public const string SUSPENDED_4TH = "sus4";
+
+        /// <summary>
+        /// アドナインス
+        /// </summary>
+        public const string ADD_9TH = "add9";
     }
 }
