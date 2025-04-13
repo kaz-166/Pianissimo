@@ -7,20 +7,20 @@ This CUI program returns the corresponding chord tone when a chord name(chord sy
 Tension chords（ex. add9 (9) and more...) and fractional chords(slash chords, for example C/E) are not yet supported. Expansion chords are planned for the future.
 
 現在の対応状況は下記となります。
-| 和音名 | 対応状況 |
-| ---- | ---- |
-| 長三和音(〇) | 対応済 |
-| 短三和音(〇ｍ) | 対応済 |
-| 増三和音(〇aug) | 対応済 |
-| Suspended 4th(〇sus4) | 対応済 |
-| 長七和音(〇△7, 〇M7, 〇maj7) | 対応済 |
-| 短七和音(〇m7) | 対応済 |
-| 導七和音(〇m7b5, 〇m7-5) | 対応済 |
-| 長七短五和音(〇mM7) | 対応済 |
-| 減七和音(〇dim) | 対応済み |
-| Add 9th(〇add9) | 未対応 |
-| 長九和音(〇7(9), 〇9) | 未対応 |
-| 分数コード | 未対応 |
+| 和音名 | 区分 |対応状況 |
+| ---- | ---- | ---- |
+| 長三和音(〇) |Triad| 対応済 |
+| 短三和音(〇ｍ) |Triad| 対応済 |
+| 増三和音(〇aug) |Triad| 対応済 |
+| Suspended 4th(〇sus4) |Triad| 対応済 |
+| 長七和音(〇△7, 〇M7, 〇maj7) |Seventh| 対応済 |
+| 短七和音(〇m7) |Seventh| 対応済 |
+| 導七和音(〇m7b5, 〇m7-5) |Seventh| 対応済 |
+| 長七短五和音(〇mM7) |Seventh| 対応済 |
+| 減七和音(〇dim) |Seventh| 対応済み |
+| Add 9th(〇add9) |Tension| 未対応 |
+| 長九和音(〇7(9), 〇9) |Tension| 未対応 |
+| 分数コード |Others| 未対応 |
 
 ![スクリーンショット 2024-10-26 031234](https://github.com/user-attachments/assets/52f50e0f-1f99-4b14-b573-2a264194b0d8)
 
