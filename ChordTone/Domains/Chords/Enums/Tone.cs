@@ -34,21 +34,23 @@ namespace ChordTone.Domains.Chords.Enums
         /// <param name="interval">度数</param>
         /// <returns>指定された度数上(または下)の音階</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <summary>
+        /// 指定の度数差の音階を取得する拡張メソッド
+        /// </summary>
+        /// <param name="tone">基準となる音階</param>
+        /// <param name="interval">度数</param>
+        /// <returns>指定された度数上(または下)の音階</returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static Tone Get(this Tone tone, int interval)
         {
-            // イテレーションを行い1オクターブ内に収束させる
-            // 1オクターブ内に収まるように調整
+            var min = Tone.C + 1;
+            var max = Tone.HiC;
+
             var ret = tone + interval;
 
-            while (ret > Tone.HiC)
-            {
-                ret -= Tone.HiC;
-            }
-
-            while (ret <= Tone.C)
-            {
-                ret += (int)Tone.HiC;
-            }
+            // 1オクターブ内で循環させる
+            var octaveRange = max - min + 1;
+            ret = ((ret - min) % octaveRange + octaveRange) % octaveRange + min;
 
             return ret;
         }
