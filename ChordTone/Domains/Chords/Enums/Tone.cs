@@ -36,7 +36,7 @@ namespace ChordTone.Domains.Chords.Enums
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static Tone Get(this Tone tone, int interval)
         {
-            // イテレーションを行い1オクターブ内に収束指せる
+            // イテレーションを行い1オクターブ内に収束させる
             // 1オクターブ内に収まるように調整
             var ret = tone + interval;
 
